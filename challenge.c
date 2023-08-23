@@ -43,8 +43,7 @@ int q2Array[Q2_ARRAY_SIZE];
 //-------------------------------------------------------------------------
 uint16_t q3(uint8_t x, uint8_t y)
 {
-    uint16_t z = (x ^ 0b10000001);
-    return z | y;
+    return (x ^ 0b10000001) << 8 | y;
 }
 
 //-------------------------------------------------------------------------
@@ -65,7 +64,7 @@ int32_t q4(uint8_t *array, uint32_t arrayLength)
     }
 
     int32_t sum = 0;
-    for (uint8_t i = 0; i <= arrayLength; i++)
+    for (uint32_t i = 0; i < arrayLength; i++)
     {
         sum += array[i];
     }
@@ -81,7 +80,7 @@ int32_t q4(uint8_t *array, uint32_t arrayLength)
 typedef union
 {
     uint32_t a;
-    uint32_t b;
+    uint16_t b;
 } q5_t;
 
 //-------------------------------------------------------------------------
